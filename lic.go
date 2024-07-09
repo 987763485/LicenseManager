@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/987763485/LicenseManager/utils"
 	"github.com/denisbrodbeck/machineid"
-	"github.com/xinjiayu/LicenseManager/utils"
 	"io"
 	"io/ioutil"
 	"log"
@@ -90,7 +90,7 @@ func ValidAppLic(appInfoFile, key string) (res bool, err error) {
 		limitedTime := conf.LimitedTime
 		if limitedTime != "" {
 			licDate, _ := strconv.Atoi(limitedTime)
-			nowDate := time.Now().Format("20060102")
+			nowDate := time.Now().Format("20060102150405")
 			currentDate, _ := strconv.Atoi(nowDate)
 			if licDate < currentDate {
 				errInfo := fmt.Sprintf("授权文件已过期!授权结束日期:%d", licDate)

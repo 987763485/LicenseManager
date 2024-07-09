@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/xinjiayu/LicenseManager"
+	"github.com/987763485/LicenseManager"
 )
 
 func main() {

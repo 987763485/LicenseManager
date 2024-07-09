@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/xinjiayu/LicenseManager"
+	"github.com/987763485/LicenseManager"
 	"os"
 	"unicode/utf8"
 )
@@ -31,7 +31,7 @@ func main() {
 	}
 
 	if f != "" && k != "" {
-		if utf8.RuneCountInString(k) != 24 {
+		if utf8.RuneCountInString(k) != 16 {
 			fmt.Fprintf(os.Stderr, "key invalid: %s", k)
 		}
 		LicenseManager.EncryptLic(f, k)

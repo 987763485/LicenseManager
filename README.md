@@ -4,6 +4,13 @@
 
 这只是一个简单的日期限制，可以基于这个基础增加对目标服务器的IP、MAC地址等唯一标识进行限制
 
+### 使用方式：
+
+```go
+go get github.com/987763485/LicenseManager
+```
+
+
 
 ### license授权码生成工具：
 进入Createlic目录中，执行
@@ -54,7 +61,7 @@ license配置文件说明：
 ### 在应用中调用的方式：
 
 ```go
-	LicenseManager.ValidAppLic("AppName名", "key值")
+LicenseManager.ValidAppLic("AppName名", "key值")
 ```
 
 **说明：**
