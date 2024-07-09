@@ -99,5 +99,8 @@ func ValidAppLic(appInfoFile, key string) (res bool, err error) {
 		}
 
 	}
+	if err != nil {
+		return false, errors.New("授权文件解析失败")
+	}
 	return true, nil
 }
