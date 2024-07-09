@@ -11,7 +11,6 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"strconv"
 	"time"
 )
 
@@ -89,17 +88,18 @@ func ValidAppLic(appInfoFile, key string) (res bool, err error) {
 
 		limitedTime := conf.LimitedTime
 		if limitedTime != "" {
-			licDate, _ := strconv.Atoi(limitedTime)
-			nowDate := time.Now().Format("20060102150405")
-			currentDate, _ := strconv.Atoi(nowDate)
-			if licDate < currentDate {
-				errInfo := fmt.Sprintf("授权文件已过期!授权结束日期:%d", licDate)
+			licDate, err := time.Parse("20060102150405", limitedTime)
+			if err != nil {
+				return false, errors.New("授权文件日期解析失败")
+			}
+			nowDate := time.Now()
+			if licDate.Unix() < nowDate.Unix() {
+				errInfo := fmt.Sprintf("授权文件已过期!授权结束日期:%v", licDate.Format("2006-01-02 15:04:05"))
 				return false, errors.New(errInfo)
 			}
 		}
 
-	}
-	if err != nil {
+	} else {
 		return false, errors.New("授权文件解析失败")
 	}
 	return true, nil
