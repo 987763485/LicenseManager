@@ -88,7 +88,7 @@ func ValidAppLic(appInfoFile, key string) (res bool, err error) {
 
 		limitedTime := conf.LimitedTime
 		if limitedTime != "" {
-			licDate, err := time.Parse("20060102150405", limitedTime)
+			licDate, err := time.ParseInLocation("2006-01-02 15:04:05", limitedTime, time.Local)
 			if err != nil {
 				return false, errors.New("授权文件日期解析失败")
 			}
